@@ -1,9 +1,9 @@
 <?php
 
 /**
- * UserController
+ * コントローラ
  */
-class UserController
+class UserController extends Controller
 {
     public function index(UserService $userService)
     {
@@ -32,7 +32,7 @@ interface UserRepository
 }
 
 /**
- * 具象クラス（本番用）
+ * 具象クラス（開発用）
  */
 class DummyUserRepository implements UserRepository
 {
@@ -43,7 +43,7 @@ class DummyUserRepository implements UserRepository
 }
 
 /**
- * 具象クラス（開発用）
+ * 具象クラス（本番用）
  */
 class UserAPIRepository implements UserRepository
 {
