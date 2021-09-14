@@ -5,9 +5,9 @@
  */
 class UserController extends Controller
 {
-    public function index(UserService $userService)
+    public function show(UserService $userService)
     {
-        $user = $userService->getUserByToken();
+        $user = $userService->getUserByToken('token');
         // viewを返す
     }
 }
@@ -17,9 +17,16 @@ class UserController extends Controller
  */
 class UserService
 {
-    public function getUserByToken(UserRepository $userRepository)
+    private $userRepository;
+    
+    public function __construct(UserRepository $userRepository)
     {
-        return $userRepository->findUserByToken('token');
+        $this->userRepository = $userRepository;
+    }
+    
+    public function getUserByToken(string $token)
+    {
+        return $this->userRepository->findUserByToken($token);
     }
 }
 
